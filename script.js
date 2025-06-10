@@ -3,6 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
   const closeMenu = document.getElementById('close-menu');
+  menuToggle.addEventListener('click', () => {
+  navLinks.classList.add('open');
+  menuToggle.classList.add('open'); // ✅ Add this
+});
+
+closeMenu.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  menuToggle.classList.remove('open'); // ✅ And this
+});
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
