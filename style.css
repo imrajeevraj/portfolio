@@ -101,10 +101,6 @@ nav {
   z-index: 200;
 }
 
-/* ...existing code... */
-
-/* ...existing code... */
-
 /* ====== MICROSOFT-STYLE MOBILE MENU ====== */
 @media (max-width: 900px) {
   .menu-toggle {
@@ -350,6 +346,7 @@ nav {
   box-shadow: 0 2px 12px #6366f140;
   transition: transform 0.3s, box-shadow 0.3s;
   animation: fadeIn 1.2s;
+  cursor: pointer;
 }
 
 .project-card:hover {
