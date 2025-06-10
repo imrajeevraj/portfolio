@@ -100,22 +100,10 @@ nav {
   color: #fff;
 }
 
-/* ====== MOBILE NAV MENU ====== */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  margin-left: auto;
-  z-index: 200;
-}
-
 /* ====== MICROSOFT-STYLE MOBILE MENU ====== */
 @media (max-width: 900px) {
   .menu-toggle {
-    display: block;
+    display: flex;
     position: absolute;
     right: 1.2rem;
     top: 1.2rem;
@@ -221,6 +209,7 @@ nav {
   border: none;
   cursor: pointer;
   z-index: 200;
+  padding: 0.5rem;
 }
 
 .menu-toggle .bar {
