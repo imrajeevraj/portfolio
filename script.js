@@ -1,19 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Responsive menu (if you have a hamburger menu)
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
   const closeMenu = document.getElementById('close-menu');
 
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.add('open');
-  });
-
-  closeMenu.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-  });
-
-  // Optional: close menu when clicking outside
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.add('open');
+    });
+  }
+  if (closeMenu && navLinks) {
+    closeMenu.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+    });
+  }
   document.addEventListener('click', (e) => {
     if (
+      navLinks &&
       navLinks.classList.contains('open') &&
       !navLinks.contains(e.target) &&
       e.target !== menuToggle
@@ -22,12 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Project popup for "coming soon" (only for RozgaarSetu and CureSense AI)
+  // Project popup for "coming soon" (for RozgaarSetu and CureSense AI)
   document.querySelectorAll('.project-card').forEach(card => {
     const title = card.querySelector('h3');
     if (!title) return;
     const projectName = title.textContent.trim();
     if (projectName === 'RozgaarSetu' || projectName === 'CureSense AI') {
+      card.style.cursor = "pointer";
       card.addEventListener('click', function(e) {
         e.stopPropagation();
         if (document.getElementById('custom-popup')) return;
@@ -83,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `;
 
-        // Add keyframes for bounce animation
+        // Add keyframes for bounce animation if not already present
         if (!document.getElementById('popup-bounce-style')) {
           const style = document.createElement('style');
           style.id = 'popup-bounce-style';
