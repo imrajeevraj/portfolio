@@ -1,38 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Responsive menu (if you have a hamburger menu)
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
   const closeMenu = document.getElementById('close-menu');
-  menuToggle.addEventListener('click', () => {
-  navLinks.classList.add('open');
-  menuToggle.classList.add('open'); // ✅ Add this
-});
-
-closeMenu.addEventListener('click', () => {
-  navLinks.classList.remove('open');
-  menuToggle.classList.remove('open'); // ✅ And this
-});
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       navLinks.classList.add('open');
+      menuToggle.classList.add('open'); // Animate hamburger to X
     });
   }
+
   if (closeMenu && navLinks) {
     closeMenu.addEventListener('click', () => {
       navLinks.classList.remove('open');
+      menuToggle.classList.remove('open'); // Animate X to hamburger
     });
   }
+
   document.addEventListener('click', (e) => {
     if (
       navLinks &&
       navLinks.classList.contains('open') &&
       !navLinks.contains(e.target) &&
-      e.target !== menuToggle
+      e.target !== menuToggle &&
+      !menuToggle.contains(e.target)
     ) {
       navLinks.classList.remove('open');
+      menuToggle.classList.remove('open');
     }
   });
+});
 
   // Project popup for "coming soon" (for RozgaarSetu and CureSense AI)
   document.querySelectorAll('.project-card').forEach(card => {
