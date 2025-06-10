@@ -26,11 +26,12 @@ nav {
   background: linear-gradient(90deg, #6366f1 0%, #38bdf8 100%);
   box-shadow: 0 2px 16px rgba(56,189,248,0.08);
   animation: navFadeIn 1.2s;
+  position: relative;
 }
 
 @keyframes navFadeIn {
-  from { opacity: 0; transform: translateY(-30px);}
-  to { opacity: 1; transform: translateY(0);}
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .logo {
@@ -83,35 +84,51 @@ nav {
   box-shadow: 0 2px 8px #fbbf2440;
 }
 
+/* ====== THEME TOGGLE (HIDDEN) ====== */
 #theme-toggle {
-  background: #fff;
-  color: #6366f1;
+  display: none !important;
+}
+
+/* ====== HAMBURGER MENU BUTTON ====== */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  background: none;
   border: none;
-  border-radius: 50%;
-  font-size: 1.3rem;
   cursor: pointer;
-  padding: 0.5rem 0.8rem;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px #6366f140;
+  z-index: 1201;
+  padding: 0.5rem;
 }
 
-#theme-toggle:hover {
-  background: #fbbf24;
-  color: #fff;
+.menu-toggle .bar {
+  height: 4px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  margin: 3px 0;
+  transition: all 0.3s ease;
 }
 
-/* ====== MICROSOFT-STYLE MOBILE MENU ====== */
+.menu-toggle.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ====== MOBILE NAV MENU ====== */
 @media (max-width: 900px) {
   .menu-toggle {
     display: flex;
     position: absolute;
     right: 1.2rem;
     top: 1.2rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #fff;
-    z-index: 1201;
   }
   .nav-links {
     position: fixed;
@@ -127,7 +144,6 @@ nav {
     justify-content: flex-start;
     gap: 1.5rem;
     padding: 2.5rem 2rem 2rem 1rem;
-    border-radius: 0;
     transition: right 0.35s cubic-bezier(.77,0,.18,1);
     display: flex;
     z-index: 1200;
@@ -168,66 +184,12 @@ nav {
     padding: 0;
     line-height: 1;
   }
-  nav {
-    position: relative;
-  }
-}
-
-/* Hide nav-links by default on mobile, show when open */
-@media (max-width: 900px) {
-  .nav-links {
-    right: -100vw;
-  }
-  .nav-links.open {
-    right: 0;
-  }
-}
-
-/* Hide close-menu button on desktop, show only on mobile */
-.close-menu {
-  display: none;
-}
-
-@media (max-width: 900px) {
   .close-menu {
+    display: none;
+  }
+  .nav-links.open .close-menu {
     display: block;
   }
-}
-
-/* Hide the theme toggle button (moon/sun icon) everywhere */
-#theme-toggle {
-  display: none !important;
-}
-
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 200;
-  padding: 0.5rem;
-}
-
-.menu-toggle .bar {
-  height: 4px;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.menu-toggle.open .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.menu-toggle.open .bar:nth-child(2) {
-  opacity: 0;
-}
-.menu-toggle.open .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* ====== HERO SECTION ====== */
