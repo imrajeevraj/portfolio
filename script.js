@@ -3,23 +3,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.getElementById('nav-links');
   const closeMenu = document.getElementById('close-menu');
 
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.add('open');
-      menuToggle.classList.add('open'); // Animate hamburger to X
-    });
-  }
+  // Open mobile nav
+  menuToggle?.addEventListener('click', () => {
+    navLinks.classList.add('open');
+    menuToggle.classList.add('open');
+    menuToggle.setAttribute('aria-expanded', 'true');
+  });
 
-  if (closeMenu && navLinks) {
-    closeMenu.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuToggle.classList.remove('open'); // Animate X to hamburger
-    });
-  }
+  // Close mobile nav
+  closeMenu?.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  });
 
+  // Close nav when clicking outside (mobile only)
   document.addEventListener('click', (e) => {
     if (
-      navLinks &&
+      window.innerWidth <= 900 &&
       navLinks.classList.contains('open') &&
       !navLinks.contains(e.target) &&
       e.target !== menuToggle &&
@@ -27,11 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
     ) {
       navLinks.classList.remove('open');
       menuToggle.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
     }
   });
-});
 
-  // Project popup for "coming soon" (for RozgaarSetu and CureSense AI)
+  // On resize: reset nav on desktop, close on mobile
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      navLinks.classList.remove('open');
+      menuToggle.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Project popup "Coming soon" logic
   document.querySelectorAll('.project-card').forEach(card => {
     const title = card.querySelector('h3');
     if (!title) return;
