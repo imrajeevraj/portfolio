@@ -93,17 +93,17 @@ nav {
 .menu-toggle {
   display: none;
   flex-direction: column;
-  justify-content: space-between;
-  background: none;
-  border: none;
+  gap: 5px;
   cursor: pointer;
   z-index: 1000;
+  background: none;
+  border: none;
 }
 
 .menu-toggle .bar {
-  height: 3px;
   width: 25px;
-  background-color: #fff;
+  height: 3px;
+  background-color: #fff !important;
   border-radius: 2px;
 }
 
@@ -120,11 +120,10 @@ nav {
 /* ====== MOBILE NAV MENU ====== */
 @media (max-width: 900px) {
   .menu-toggle {
-    display: flex !important;
+    display: flex;
     position: absolute;
     right: 1.2rem;
     top: 1.2rem;
-    z-index: 1201;
   }
   .nav-links {
     position: fixed;
@@ -600,4 +599,3 @@ footer {
 .nav-overlay.show {
   display: block;
 }
-
