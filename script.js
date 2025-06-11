@@ -1,15 +1,17 @@
 console.log("JS loaded!");
-// ...rest of your code...
+
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
   const closeMenu = document.getElementById('close-menu');
+  const overlay = document.getElementById('nav-overlay');
 
   // Open mobile nav
   menuToggle?.addEventListener('click', () => {
     navLinks.classList.add('open');
     menuToggle.classList.add('open');
     menuToggle.setAttribute('aria-expanded', 'true');
+    overlay?.classList.add('show');
   });
 
   // Close mobile nav
@@ -17,6 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.classList.remove('open');
     menuToggle.classList.remove('open');
     menuToggle.setAttribute('aria-expanded', 'false');
+    overlay?.classList.remove('show');
+  });
+
+  // Click on overlay to close menu
+  overlay?.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    overlay?.classList.remove('show');
   });
 
   // Close nav when clicking outside (mobile only)
@@ -31,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks.classList.remove('open');
       menuToggle.classList.remove('open');
       menuToggle.setAttribute('aria-expanded', 'false');
+      overlay?.classList.remove('show');
     }
   });
 
@@ -40,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks.classList.remove('open');
       menuToggle.classList.remove('open');
       menuToggle.setAttribute('aria-expanded', 'false');
+      overlay?.classList.remove('show');
     }
   });
 
@@ -54,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         if (document.getElementById('custom-popup')) return;
 
-        // Create overlay
         let overlay = document.createElement('div');
         overlay.id = 'custom-popup-overlay';
         overlay.style.position = 'fixed';
@@ -68,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.style.alignItems = 'center';
         overlay.style.justifyContent = 'center';
 
-        // Create animated popup box
         let popup = document.createElement('div');
         popup.id = 'custom-popup';
         popup.innerHTML = `
@@ -105,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         `;
 
-        // Add keyframes for bounce animation if not already present
         if (!document.getElementById('popup-bounce-style')) {
           const style = document.createElement('style');
           style.id = 'popup-bounce-style';
@@ -123,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.appendChild(popup);
         document.body.appendChild(overlay);
 
-        // Close on OK button or overlay click
         const closePopup = () => {
           overlay.style.opacity = '1';
           overlay.style.transition = 'opacity 0.3s';
@@ -138,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
           if (ev.target === overlay) closePopup();
         });
 
-        // Auto-close after 2 seconds
         setTimeout(closePopup, 2000);
       });
     }
