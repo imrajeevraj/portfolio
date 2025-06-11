@@ -125,10 +125,11 @@ nav {
 /* ====== MOBILE NAV MENU ====== */
 @media (max-width: 900px) {
   .menu-toggle {
-    display: flex;
+    display: flex !important;
     position: absolute;
     right: 1.2rem;
     top: 1.2rem;
+    z-index: 1201;
   }
   .nav-links {
     position: fixed;
