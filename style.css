@@ -486,6 +486,8 @@ footer {
     flex-wrap: wrap;
     gap: 0.7rem;
     justify-content: center;
+    border-left: 2px solid #e0e7ff;
+    backdrop-filter: blur(12px);
   }
 }
 
@@ -588,3 +590,18 @@ footer {
     display: none !important;
   }
 }
+/* ====== MOBILE NAV OVERLAY ====== */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(34, 34, 59, 0.3);
+  z-index: 1100;
+  display: none;
+}
+.nav-overlay.show {
+  display: block;
+}
+
