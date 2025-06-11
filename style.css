@@ -567,3 +567,24 @@ footer {
     padding: 0.5rem 0.8rem;
   }
 }
+
+@media (min-width: 901px) {
+  .nav-links {
+    position: static !important;
+    height: auto !important;
+    width: auto !important;
+    background: none !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    transition: none !important;
+    right: 0 !important;
+    z-index: auto !important;
+    display: flex !important;
+  }
+  .menu-toggle, .close-menu {
+    display: none !important;
+  }
+}
