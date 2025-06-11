@@ -91,7 +91,7 @@ nav {
 
 /* ====== HAMBURGER MENU BUTTON ====== */
 .menu-toggle {
-  display: flex !important;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   width: 28px;
@@ -109,7 +109,6 @@ nav {
   background-color: #fff;
   border-radius: 2px;
   margin: 3px 0;
-  display: block;
   transition: all 0.3s ease;
 }
 
